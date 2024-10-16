@@ -3,7 +3,6 @@ from torchvision.datasets import CIFAR10
 from torch.utils.data import DataLoader
 
 
-
 transform = transforms.Compose(
     [transforms.ToTensor(),
     transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])]
