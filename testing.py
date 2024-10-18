@@ -1,22 +1,31 @@
 import torch
 from torchvision.utils import make_grid
-from image_processing.loading_cifar10 import testloader, classes, batch_size
-from image_processing.show_some_training_images import imshow
-from image_processing.convolutional_neural_network import Net
-from image_processing.training import PATH
+from loading_cifar10 import LoadCifar10
+from showing_images import ShowImages
+from convolutional_neural_network import Net
 
-# load trained model
-net = Net()
-net.load_state_dict(torch.load(PATH, weights_only=True))
-print('model loaded')
 
-# show images from test set
-dataiter = iter(testloader)
-images, labels = next(dataiter)
-imshow(make_grid(images))
-print('ground truth: ', ' '.join(f'{classes[labels[j]]:5s}' for j in range(batch_size)))
+class Test:
 
-# show predicted images on test set
-outputs = net(images)
-_, predicted = torch.max(outputs, 1)
-print('predicted: ', ' '.join(f'{classes[predicted[j]]:5s}' for j in range(batch_size)))
+    @staticmethod
+    def test():
+        batch_size, classes, _, testloader = LoadCifar10.load_cifar10()
+
+        # load trained model
+        net = Net()
+        PATH = '.cifar_net.pth'
+        net.load_state_dict(torch.load(PATH, weights_only=True))
+        print('model loaded')
+
+        # show images from test set
+        dataiter = iter(testloader)
+        images, labels = next(dataiter)
+        ShowImages().imgshow(make_grid(images))
+        print('ground truth: ', ' '.join(f'{classes[labels[j]]:5s}' for j in range(batch_size)))
+
+        # show predicted images on test set
+        outputs = net(images)
+        _, predicted = torch.max(outputs, 1)
+        print('predicted: ', ' '.join(f'{classes[predicted[j]]:5s}' for j in range(batch_size)))
+
+Test.test()
