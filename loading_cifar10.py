@@ -43,7 +43,7 @@ class LoadCifar10:
 
         return (batch_size, classes, trainloader, testloader)
 
-# LoadCifar10.load_cifar10()
+LoadCifar10.load_cifar10()
 
 
 

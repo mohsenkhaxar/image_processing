@@ -8,7 +8,7 @@ class NetOnAllTestData:
     @staticmethod
     def net_on_all_testdata():
         # load trained model
-        PATH = '.cifar_net.pth'
+        PATH = './cifar_net.pth'
         net = Net()
         net.load_state_dict(torch.load(PATH, weights_only=True))
         print('model loaded')

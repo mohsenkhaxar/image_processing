@@ -8,7 +8,7 @@ class ClassesPerformance:
     @staticmethod
     def classes_performance():
         # load trained model
-        PATH = '.cifar_net.pth'
+        PATH = './cifar_net.pth'
         net = Net()
         net.load_state_dict(torch.load(PATH, weights_only=True))
         print('model loaded')

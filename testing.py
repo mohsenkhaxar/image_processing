@@ -13,7 +13,7 @@ class Test:
 
         # load trained model
         net = Net()
-        PATH = '.cifar_net.pth'
+        PATH = './cifar_net.pth'
         net.load_state_dict(torch.load(PATH, weights_only=True))
         print('model loaded')
 

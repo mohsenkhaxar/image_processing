@@ -34,8 +34,8 @@ class Train:
         print('training finished')
 
         # save trained model
-        PATH = '.cifar_net.pth'
+        PATH = './cifar_net.pth'
         torch.save(net.state_dict(), PATH)
         print('model saved')
 
-# Train.train()
+Train.train()
